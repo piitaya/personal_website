@@ -21,4 +21,9 @@ class ApplicationController < ActionController::Base
     end
     I18n.locale = l
   end
+  
+  rescue_from CanCan::AccessDenied do |exception|  
+    flash[:alert] = t('accessdenied.text') 
+    redirect_to root_url  
+  end  
 end
