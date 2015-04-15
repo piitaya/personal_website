@@ -7,7 +7,7 @@ fr:
     text:
       content: "La page que vous recherchez n'existe pas..."
       title: "Page introuvable"
-  accesdenied:
+  accessdenied:
     text: "Vous n'êtes pas autorisé à accéder à cette page."
   footer:
     text: "© 2014 Paul Bottein - Built with Bootstrap 3.2.0"
