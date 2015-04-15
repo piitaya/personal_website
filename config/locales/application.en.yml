@@ -8,7 +8,7 @@ en:
       content: "The page you are looking for does not exist..."
       title: "Page not found"
   accessdenied:
-    text: "Vous n'êtes pas autorisé à accéder à cette page."
+    text: "You are not authorized to access this page."
   footer:
     text: "© 2014 Paul Bottein - Built with Bootstrap 3.2.0"
   title:
