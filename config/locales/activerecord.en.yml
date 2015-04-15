@@ -1,0 +1,46 @@
+en:
+  activerecord:
+    models:
+      experience: experience
+      project: project
+      skill: skill
+      type: type
+      category: category  
+    attributes:
+      experience:
+        title: "Title"
+        place: "Place"
+        country: "Country"
+        company: "Company"
+        logo: "Logo"
+        image: "Image"
+        begin_date: "Begin date"
+        end_date: "End date"
+        type: "Type"
+        skills: "Skills"
+        description: "Description"
+        short_description: "Short Description"
+      project:
+        title: "Title"
+        subtitle: "Subtitle"
+        description: "Description"
+        short_description: "Short Description"
+        experience: "Experience"
+        order_display: "Display Order"
+      skill:
+        name: Name 
+        power: Power
+        category_id: Category
+        category: Category
+        experiences: Experiences
+      type:
+        name: Name
+        style_icon: Icon
+        style_color: Color
+      category:
+        name: Name
+        order_display: "Display Order"
+        style_icon: Icon
+  locale_name:
+    fr: French
+    en: English

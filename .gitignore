@@ -1,0 +1,14 @@
+.bundle
+db/*.sqlite3*
+log/*.log
+*.log
+/tmp/
+doc/
+*.swp
+.DS_Store
+public/assets/*
+public/images/*
+
+config/settings/production.yml
+config/settings/development.yml
+config/settings/test.yml

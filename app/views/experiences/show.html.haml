@@ -1,0 +1,56 @@
+.row
+  .col-sm-8.col-md-9
+    .well
+      .well-header
+        - if @experience.logo.exists?
+          = image_tag @experience.logo.url(:logo), :class => "image-logo"
+        .well-header-title
+          = @experience.title
+        .well-header-info
+          = place(@experience)
+        .well-header-info
+          %i.mdi-notification-event-note.mdi-material-grey-600.well-icon
+          = date(@experience)
+      .well-content
+        = mark_down @experience.description
+      - if can? :update, @experience or can? :destroy, @experience
+        .well-content.right
+          - if can? :update, @experience
+            .icon-action
+              %a.button-link{:href => edit_experience_path}
+                %i.mdi-editor-mode-edit.button-icon
+          - if can? :destroy, @experience
+            .icon-action
+              %a.button-link{:href => experience_path, :data => { :confirm => t("dialog.sure"), :method => :delete}, :rel => "nofollow"}
+                %i.mdi-action-delete.button-icon
+        
+  .col-sm-4.col-md-3
+    - if @experience.image.exists?
+      .well
+        .well-image.well-image
+          = image_tag @experience.image.url(:big), :class => "image-thumbnail"
+    .well
+      .well-header
+        Compétences
+      .well-content
+        - if !@skills.empty?
+          %ul.list-group
+            - @skills.each do |skill|
+              %li.list-group-item
+                = skill.name
+                %span.badge= skill.category.name
+        - else
+          = "Aucune compétence n'est rattachée à cette expérience"     
+
+    .well
+      .well-header
+        Projets liés
+      .well-content
+        - if !@projects.empty?
+          .list-group
+            - @projects.each do |project|
+              = link_to(project, class: "list-group-item") do
+                %h4.list-group-item-heading= project.title
+                %p.list-group-item-text= project.subtitle
+        - else
+          = "Aucun projet n'est rattaché à cette expérience"

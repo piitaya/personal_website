@@ -1,0 +1,67 @@
+.row
+  .col-md-12
+    .well
+      .well-header
+        .row
+          .col-md-12
+            = @experience.title
+      .well-content
+        = form_for @experience do |f|
+          = form_error_messages!(@experience)
+          %fieldset
+            .row
+              .col-md-4
+                .form-group
+                  = f.label :logo, {:class=>"control-label"}
+                  = image_tag @experience.logo.url(:logo)
+                  .form-control-wrapper.fileinput
+                    %input.form-control.empty{:readonly => "", :type => "text", :placeholder => t("form.browse")}
+                      = f.file_field :logo
+                      %span.material-input
+                .form-group
+                  = f.label :image, {:class=>"control-label"}
+                  = image_tag @experience.image.url(:medium)
+                  .form-control-wrapper.fileinput
+                    %input.form-control.empty{:readonly => "", :type => "text", :placeholder => t("form.browse")}
+                      = f.file_field :image
+                      %span.material-input
+              .col-md-4
+                - I18n.available_locales.each do |lang|
+                  = f.globalize_fields_for lang do |g|
+                    .form-group
+                      = g.label :title, translate_label(Experience, :title, lang), {:class=>"control-label"}
+                      = g.text_field :title, {:class=>"form-control"}
+                    .form-group
+                      = g.label :company, translate_label(Experience, :company, lang), {:class=>"control-label"}
+                      = g.text_field :company, {:class=>"form-control"}
+                    .form-group
+                      = g.label :place, translate_label(Experience, :place, lang), {:class=>"control-label"}
+                      = g.text_field :place, {:class=>"form-control"}
+                    .form-group
+                      = g.label :country, translate_label(Experience, :country, lang), {:class=>"control-label"}
+                      = g.text_field :country, {:class=>"form-control"}
+              .col-md-4
+                .form-group
+                  = f.label :begin_date, {:class=>"control-label"}
+                  = f.date_select :begin_date, {:order => [:month, :year], :start_year => 2009, :end_year => Time.now.year}, {:class=>"form-control"}
+                .form-group
+                  = f.label :end_date, {:class=>"control-label"}
+                  = f.date_select :end_date, {:include_blank => true, :order => [:month, :year], :start_year => 2009, :end_year => Time.now.year}, {:class=>"form-control"}
+                .form-group
+                  = f.label :type
+                  = f.collection_select :type_id, Type.all, :id, :name, {:include_blank => true}, {:class=>"form-control"}
+                .form-group
+                  = f.label :skills
+                  = f.collection_select :skill_ids, Skill.all, :id, :name, {}, {:multiple => true, :class=>"form-control", :size=>"10"}
+              .col-md-12
+                - I18n.available_locales.each do |lang|
+                  = f.globalize_fields_for lang do |g|
+                    .form-group
+                      = g.label :description, translate_label(Experience, :description, lang), {:class=>"control-label"}
+                      = g.text_area :description, {:class=>"form-control", :rows => "10"}
+                    .form-group
+                      = g.label :short_description, translate_label(Experience, :short_description, lang), {:class=>"control-label"}
+                      = g.text_area :short_description, {:class=>"form-control", :rows => "10"}
+                .form-group
+                  .center
+                    = f.submit t("action.save"), :class=> "btn btn-primary"

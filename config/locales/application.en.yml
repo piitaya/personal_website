@@ -1,0 +1,100 @@
+en:
+  form:
+    browse: Browse...
+  dialog:
+    sure: "Are you sure ?"
+  error404:
+    text:
+      content: "The page you are looking for does not exist..."
+      title: "Page not found"
+  footer:
+    text: "© 2014 Paul Bottein - Built with Bootstrap 3.2.0"
+  title:
+    application: "Paul Bottein"
+    home: Home
+    contact: "Contact"
+    skills: "Skills"
+    projects: "Projects"
+    experiences: "Experiences"
+    error404: "404"
+    admin: "Administration"
+  subtitle:
+    contact: "Contact me"
+    home: "Home"
+    skills: 
+      index: "My skills"
+      new: "New skill"
+      edit: "Edit skill"
+    projects: 
+      index: "My projects"
+      new: "New project"
+      edit: "Edit project"
+    experiences:
+      index: "My experiences"
+      new: "New experience"
+      edit: "Edit experience"
+    categories:
+      new: "New category"
+      edit: "Edit category"
+    types:
+      new: "New type"
+      edit: "Edit type"
+    error404: "Oups #404"
+    admin: "Administration"
+  menu: 
+    application: "Paul Bottein"
+    home: "Home"
+    contact: "Contact"
+    about: "About"
+    skills: "Skills"
+    projects: "Projects"
+    experiences: "Experiences"
+    account: "Account"
+    admin: "Admin"
+    languages:
+      lang: Languages
+      fr: French
+      en: English
+  home:
+    text:
+      title: Welcome
+  experience: 
+    button:
+      detail: "View detail"
+  admin:
+    text:
+      skills:
+        title: "Skills categories"
+      experiences: 
+        title: "Experiences types"
+    button:
+      add: Add
+  project: 
+    button:
+      detail: "View detail"
+  contact:
+    text:
+      message:
+        title: "Email"
+      social:
+        title: "Social media"
+        content: "You can follow or contact me on the different social medias."
+    button:
+      submit: "Send"
+      reset: "Cancel"
+      loading: "Loading"
+    input:
+      label:
+        email: "Email"
+        object: "Object"
+        message: "Message"
+      placeholder:
+        email: "Your email"
+        object: "Object"
+        message: "Your message"
+    checkbox:
+      label:
+        sendcopy: "Send a copy by mail"
+    result:
+      success: "Your message has been sent correctly"
+      error: "Unable to send the message"

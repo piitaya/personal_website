@@ -1,0 +1,41 @@
+.row
+  .col-sm-6
+    .well 
+      .well-header
+        .well-header-title
+          = t("admin.text.skills.title")
+      .well-content
+        - @categories.each do |category|
+          .row
+            .col-md-10.col-sm-9.col-xs-8
+              %i{:style => "font-size: 15px;", :class => category.style_icon}
+              = category.name
+            .col-md-2.col-sm-3.col-xs-4
+              - if can? :update, category
+                %a.button-link{:href => edit_category_path(category)}
+                  %i.mdi-editor-mode-edit.button-little-icon
+              - if can? :destroy, category
+                %a.button-link{:href => category_path(category), :data => { :confirm => t("dialog.sure"), :method => :delete}, :rel => "nofollow"}
+                  %i.mdi-action-delete.button-little-icon
+        %a.btn.btn-primary{:href => new_category_path}
+          = t("admin.button.add")
+  .col-sm-6
+    .well 
+      .well-header
+        .well-header-title
+          = t("admin.text.experiences.title")
+      .well-content
+        - @types.each do |type|
+          .row
+            .col-md-10.col-sm-9.col-xs-8
+              %i{:style => "font-size: 15px;", :class => type.style_icon}
+              = type.name
+            .col-md-2.col-sm-3.col-xs-4
+              - if can? :update, type
+                %a.button-link{:href => edit_type_path(type)}
+                  %i.mdi-editor-mode-edit.button-little-icon
+              - if can? :destroy, @type
+                %a.button-link{:href => type_path(type), :data => { :confirm => t("dialog.sure"), :method => :delete}, :rel => "nofollow"}
+                  %i.mdi-action-delete.button-little-icon
+        %a.btn.btn-primary{:href => new_type_path}
+          = t("admin.button.add")                   

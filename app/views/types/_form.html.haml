@@ -1,0 +1,46 @@
+.row
+  .col-md-12
+    .well
+      .well-header
+        .row
+          .col-md-12
+            = @type.name  
+      .well-content
+        = form_for @type do |f|
+          = form_error_messages!(@type)
+          %fieldset
+            .row
+              .col-sm-6
+                - I18n.available_locales.each do |lang|
+                  = f.globalize_fields_for lang do |g|
+                    .form-group
+                      = g.label :name, translate_label(Type, :name, lang), {:class=>"control-label"}
+                      = g.text_field :name, {:class=>"form-control"}
+            .row
+              .col-sm-6
+                .form-group
+                  = f.label :style_icon, {:class=>"control-label"}
+                  = f.text_field :style_icon, {:class=>"form-control", :onchange=>"update_icon(this);"}
+              .col-sm-6
+                #preview_icon{:class => @type.style_icon, :style => "font-size: 40px;"}
+            .row
+              .col-sm-6  
+                .form-group
+                  = f.label :style_color, {:class=>"control-label"}
+                  = f.text_field :style_color, {:class=>"form-control", :onchange=>"update_color(this);"}
+              .col-sm-6
+                #preview_color.btn{:class => "btn-" + @type.style_color.to_s}
+                  COLOR
+            .row
+              .form-group
+                .center
+                  = f.submit t("action.save"), :class=> "btn btn-primary btn-raised"
+:javascript
+  function update_color(sel) {
+    $("#preview_color").removeClass();
+    $("#preview_color").addClass("btn btn-" + sel.value);
+  }
+  function update_icon(sel) {
+    $("#preview_icon").removeClass();
+    $("#preview_icon").addClass(sel.value);
+  }

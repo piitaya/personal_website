@@ -1,0 +1,9 @@
+mail:
+  user_name: ''
+  password: ''
+  address: ''
+  domain: ''
+  port: ''
+registration: false
+image_magick_path: ''
+key_base: ''

@@ -1,0 +1,20 @@
+.row
+  .col-sm-12
+    .well
+      .well-header
+        .well-header-title
+          = @project.title
+        .well-header-info
+          = @project.subtitle
+      .well-content
+        = mark_down @project.description
+      - if can? :update, @project or can? :destroy, @project
+        .well-content.right
+          - if can? :update, @project
+            .icon-action
+              %a.button-link{:href => edit_project_path}
+                %i.mdi-editor-mode-edit.button-icon
+          - if can? :destroy, @project    
+            .icon-action
+              %a.button-link{:href => project_path, :data => { :confirm => t("dialog.sure"), :method => :delete}, :rel => "nofollow"}
+                %i.mdi-action-delete.button-icon

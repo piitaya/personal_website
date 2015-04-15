@@ -1,0 +1,44 @@
+%nav.navbar.fixed-top.navbar-shadow.navbav-primary{:role => "navigation"}
+  .container
+    .navbar-header
+      %button.navbar-toggle.collapsed{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %span.navbar-brand= t("menu.application")
+
+    #bs-example-navbar-collapse-1.collapse.navbar-collapse
+      %ul.nav.navbar-nav
+        %li{:class => ("active" if current_page?(root_path))}= link_to t('menu.home'), root_path
+        %li{:class => ("active" if controller.controller_name == 'experiences')}= link_to t('menu.experiences'), experiences_path
+        %li{:class => ("active" if controller.controller_name == 'projects')}= link_to t('menu.projects'), projects_path
+        %li{:class => ("active" if controller.controller_name == 'skills')}= link_to t('menu.skills'), skills_path
+        %li{:class => ("active" if controller.controller_name == 'contacts')}= link_to t('menu.contact'), contacts_path
+        - if can? :update, Category or can? :destroy, Category or can? :update, Type or can? :destroy, Type
+          %li{:class => ("active" if current_page?(admin_path) || controller.controller_name == 'categories' || controller.controller_name == 'types')}= link_to t('menu.admin'), admin_path
+          
+      %ul.nav.navbar-nav.navbar-right
+        %li.dropdown{:class => ("active" if controller.controller_name == 'registrations' || controller.controller_name == 'sessions')}
+          %a.dropdown-toggle{"data-target" => "#", "data-toggle" => "dropdown", :href => "bootstrap-elements.html"}
+            = t('menu.account')
+            %b.caret
+          %ul.dropdown-menu 
+            - if user_signed_in?
+              %li= link_to current_user.email.to_s, edit_user_registration_path
+              -# %li= link_to t('devise.registrations.edit.edit_profile'), edit_user_registration_path
+              %li= link_to t('devise.sessions.new.logout'), destroy_user_session_path, method: :delete
+            - else
+              - if Settings.registration
+                %li= link_to t('devise.registrations.new.sign_up'), new_user_registration_path
+              %li= link_to t('devise.sessions.new.sign_in'), new_user_session_path  
+        %li.dropdown
+          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+            %i{:class => flag(I18n.locale)}
+            %span.caret
+          %ul.dropdown-menu{:role => "menu"}
+            - I18n.available_locales.each do |lang|            
+              %li
+                %a{:href => change_locale_path(lang)}
+                  %i{:class => flag(lang)}
+                  = t('menu.languages.' + lang.to_s)

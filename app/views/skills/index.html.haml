@@ -1,0 +1,32 @@
+-# Add experience button
+- if can? :create, @skill
+  %a.btn.btn-fab.btn-raised.mdi-content-add.fixedbutton.btn-warning{:href => new_skill_path}
+
+.row
+  - @categories.each do |category|
+    .col-sm-4
+      .well
+        .well-header
+          .well-header-title
+            %i{:style => "font-size: 20px;", :class => category.style_icon}
+            = category.name
+        .well-content
+          - category.skills.with_translations(I18n.locale).order('power DESC, skill_translations.name ASC').each do |skill|        
+            .row          
+              .col-md-5
+                = skill.name
+              - if can? :update, @skill or can? :destroy, @skill
+                .col-md-4
+                  .progress
+                    .progress-bar{:style => "width: " + (10*skill.power).to_s + "%", :class => style(skill)}
+                .col-md-3
+                  - if can? :update, @skill
+                    %a.button-link{:href => edit_skill_path(skill)}
+                      %i.mdi-editor-mode-edit.button-little-icon
+                  - if can? :destroy, @skill
+                    %a.button-link{:href => skill_path(skill), :data => { :confirm => t("dialog.sure"), :method => :delete}, :rel => "nofollow"}
+                      %i.mdi-action-delete.button-little-icon
+              - else
+                .col-md-7
+                  .progress
+                    .progress-bar{:style => "width: " + (10*skill.power).to_s + "%", :class => style(skill)}

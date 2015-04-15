@@ -1,0 +1,3 @@
+<p><%= "Expéditeur : #{@resource.mail_form_attributes['email']}" %></p>
+<p><%= "Objet : #{@resource.mail_form_attributes['object']}" %></p>
+<p><%= raw(@resource.mail_form_attributes['message'].gsub("\n", "<br>")) %></p>

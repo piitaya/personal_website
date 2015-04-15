@@ -1,0 +1,40 @@
+.row
+  .col-md-12
+    .well
+      .well-header
+        .row
+          .col-md-12
+            = @project.title   
+      .well-content
+        = form_for @project do |f|
+          = form_error_messages!(@project)
+          %fieldset
+            .row
+              - I18n.available_locales.each do |lang|
+                = f.globalize_fields_for lang do |g|
+                  .col-md-4
+                    .form-group
+                      = g.label :title, translate_label(Project, :title, lang), {:class=>"control-label"}
+                      = g.text_field :title, {:class=>"form-control"}
+                    .form-group
+                      = g.label :subtitle, translate_label(Project, :subtitle, lang), {:class=>"control-label"}
+                      = g.text_field :subtitle, {:class=>"form-control"} 
+              .col-md-4
+                .form-group
+                  = f.label :order_display, {:class=>"control-label"}
+                  = f.number_field :order_display, {:class=>"form-control"}
+                .form-group
+                  = f.label :experience, {:class=>"control-label"}
+                  = f.collection_select :experience_id, Experience.all, :id, :to_label, {:include_blank => true}, {:class=>"form-control"}
+              .col-md-12
+                - I18n.available_locales.each do |lang|
+                  = f.globalize_fields_for lang do |g|
+                    .form-group
+                      = g.label :description, translate_label(Project, :description, lang), {:class=>"control-label"}
+                      = g.text_area :description, {:class=>"form-control", :rows => "10"} 
+                    .form-group
+                      = g.label :short_description, translate_label(Project, :short_description, lang), {:class=>"control-label"}
+                      = g.text_area :short_description, {:class=>"form-control", :rows => "10"} 
+                .form-group
+                  .center
+                    = f.submit t("action.save"), :class=> "btn btn-primary btn-raised"

@@ -1,0 +1,50 @@
+.row
+  .col-sm-6
+    .well
+      .well-header
+        .well-header-title
+          = t("contact.text.message.title")
+      .well-content
+        = form_for(@contact, :html => {:class => 'form-horizontal'}) do |f|
+          %fieldset
+            .form-group
+              .col-md-2
+                = f.label :email, t("contact.input.label.email"), :class=>"control-label"
+              .col-md-10
+                = f.email_field :email, :class=>"form-control", :placeholder=>t("contact.input.placeholder.email"), required: true, :value => ""
+            .form-group
+              .col-md-2
+                = f.label :object, t("contact.input.label.object"), :class=>"control-label"
+              .col-md-10
+                = f.text_field :object, :class=>"form-control", :placeholder=>t("contact.input.placeholder.object"), required: true, :value => ""
+            .form-group
+              .col-md-2
+                = f.label :message, t("contact.input.label.message"), :class=>"control-label"
+              .col-md-10
+                = f.text_area :message, :class=>"form-control", :placeholder=>t("contact.input.placeholder.message"), :rows=>"6", required: true, :value => ""
+            .form-group
+              .col-md-10.col-md-offset-2
+                = f.submit t("contact.button.submit"), :class=> "btn btn-primary", id: 'button-submit'
+        %div
+          - flash.each do |key, value|
+            - if key == "danger"            
+              .alert.alert-dismissable.alert-danger
+                %button.close{"data-dismiss" => "alert", :type => "button"} ×
+                = value
+            - if key == "success"
+              .alert.alert-dismissable.alert-success
+                %button.close{"data-dismiss" => "alert", :type => "button"} ×
+                = value
+  .col-sm-6
+    .well
+      .well-header
+        .well-header-title
+          = t("contact.text.social.title")
+      .well-content
+        = t("contact.text.social.content")
+            
+:javascript
+  $( "#new_contact" ).submit(function( event ) {
+    $('#button-submit').addClass("loading");
+    $('#button-submit').attr('value', t("contact.button.loading"));
+  });

@@ -1,0 +1,32 @@
+!!!
+%html
+  %head
+    %title= title
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
+    
+  %body.fixed-top-body
+    = render 'layouts/navbar'
+    .scrool
+      .container
+        - if notice
+          .alert.alert-dismissable.alert-success
+            %button.close{"data-dismiss" => "alert", :type => "button"} ×
+            = notice
+        - if alert
+          .alert.alert-dismissable.alert-danger
+            %button.close{"data-dismiss" => "alert", :type => "button"} ×
+            = alert
+        - if !subtitle.blank?
+          %h1.page-header= subtitle
+        = yield
+    %i.icon.icon-material-settings    
+    = render 'layouts/footer' 
+
+    :javascript
+    $(function() {
+        $.material.init();
+    });
+    

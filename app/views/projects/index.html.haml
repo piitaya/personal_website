@@ -1,0 +1,28 @@
+-# Add experience button
+- if can? :create, @project
+  %a.btn.btn-fab.btn-raised.mdi-content-add.fixedbutton.btn-warning{:href => new_project_path}
+
+.row
+  .col-sm-12
+    - @projects.each do |project|
+      .well
+        .well-header
+          .well-header-title
+            = project.title
+          .well-header-info
+            = project.subtitle
+        .well-content
+          = mark_down project.short_description
+          = link_to(project, class: "btn btn-primary") do
+            %i.glyphicon.glyphicon-search
+            = t("project.button.detail")
+        - if can? :update, @project or can? :destroy, @project
+          .well-content.right
+            - if can? :update, @project
+              .icon-action
+                %a.button-link{:href => edit_project_path(project)}
+                  %i.mdi-editor-mode-edit.button-icon
+            - if can? :destroy, @project
+              .icon-action
+                %a.button-link{:href => project_path(project), :data => { :confirm => t("dialog.sure"), :method => :delete}, :rel => "nofollow"}
+                  %i.mdi-action-delete.button-icon

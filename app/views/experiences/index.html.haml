@@ -1,0 +1,34 @@
+-# Add experience button
+- if can? :create, @experience
+  %a.btn.btn-fab.btn-raised.mdi-content-add.fixedbutton.btn-warning{:href => new_experience_path}
+
+%ul.timeline
+  - @experiences.each do |experience|
+    %li{:class => ("timeline-inverted" unless @experiences.index(experience)%2 == 0)}
+      %a.btn.btn-fab.btn-raised.timeline-badge{:class => style_button(experience, "btn"), :href => experience_path(experience)}
+      .well.timeline-panel
+        .well-header
+          = image_tag experience.logo.url(:logo), :class => "image-logo"
+          .well-header-title
+            = experience.title
+          .well-header-info
+            = place(experience)
+          .well-header-info
+            %i.mdi-notification-event-note.mdi-material-grey-600.well-icon
+            = date(experience)
+        .well-content
+          = mark_down experience.short_description
+          %a.btn{:class => style_color(experience, "btn"), :href => experience_path(experience)}
+            %i.glyphicon.glyphicon-search
+            = t("experience.button.detail")
+        - if can? :update, @experience or can? :destroy, @experience
+          .well-content.right
+            - if can? :update, @experience
+              .icon-action
+                %a.button-link{:href => edit_experience_path(experience)}
+                  %i.mdi-editor-mode-edit.button-icon
+            - if can? :destroy, @experience
+              .icon-action
+                %a.button-link{:href => experience_path(experience), :data => {:confirm => t("dialog.sure"), :method => :delete}, :rel => "nofollow"}
+                  %i.mdi-action-delete.button-icon
+                  

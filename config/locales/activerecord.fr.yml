@@ -1,0 +1,46 @@
+fr: 
+  activerecord:
+    models:
+      experience: expérience
+      project: projet
+      skill: compétence
+      type: type
+      category: catégorie      
+    attributes: 
+      experience: 
+        title: "Titre"
+        place: "Lieu"
+        country: "Pays"
+        company: "Entreprise"
+        logo: "Logo"
+        image: "Image"
+        begin_date: "Date de début"
+        end_date: "Date de fin"
+        type: "Type"
+        skills: "Compétences"
+        description: "Description"
+        short_description: "Description rapide"
+      project: 
+        description: Description
+        experience: Expérience
+        order_display: "Ordre d'affichage"
+        short_description: "Description rapide"
+        subtitle: Sous-titre
+        title: Titre
+      skill:
+        name: Nom
+        power: Note
+        category_id: Catégorie
+        category: Catégorie
+        experiences: Expériences
+      type:
+        name: Nom
+        style_icon: Icône
+        style_color: Couleur
+      category:
+        name: Nom
+        order_display: "Ordre d'affichage"
+        style_icon: Icône
+  locale_name:
+    fr: Français
+    en: Anglais

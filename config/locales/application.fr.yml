@@ -1,0 +1,100 @@
+fr:
+  form:
+    browse: Parcourir...
+  dialog:
+    sure: "Êtes-vous sûr ?"
+  error404:
+    text:
+      content: "La page que vous recherchez n'existe pas..."
+      title: "Page introuvable"
+  footer:
+    text: "© 2014 Paul Bottein - Built with Bootstrap 3.2.0"
+  title:
+    application: "Paul Bottein"
+    home: Accueil
+    contact: "Contact"
+    skills: "Compétences"
+    projects: "Projets"
+    experiences: "Expériences"
+    admin: Administration
+    error404: "404"
+  subtitle:
+    contact: "Me contacter"
+    home: "Accueil"
+    skills: 
+      index: "Mes compétences"
+      new: "Nouvelle compétence"
+      edit: "Edition de la compétence"
+    projects: 
+      index: "Mes projets"
+      new: "Nouveau projet"
+      edit: "Edition du projet"
+    experiences:
+      index: "Mes expériences"
+      new: "Nouvelle expérience"
+      edit: "Edition de l'expérience"
+    categories:
+      new: "Nouvelle catégorie"
+      edit: "Edition de la catégories"
+    types:
+      new: "Nouveau type"
+      edit: "Edition du type"
+    error404: "Oups #404"
+    admin: "Administration"
+  menu: 
+    application: "Paul Bottein"
+    home: "Accueil"
+    contact: "Contact"
+    about: "A propos"
+    skills: "Compétences"
+    projects: "Projets"
+    experiences: "Expériences"
+    account: "Compte"
+    admin: "Admin"
+    languages:
+      lang: Langues
+      fr: Français
+      en: Anglais
+  home:
+    text:
+      title: Bienvenue
+  experience: 
+    button:
+      detail: "Voir en détail"
+  admin:
+    text:
+      skills:
+        title: "Catégories de compétences"
+      experiences: 
+        title: "Types d'expériences"
+    button:
+      add: Ajouter
+  project: 
+    button:
+      detail: "Voir en détail"
+  contact:
+    text:
+      message:
+        title: "Email"
+      social:
+        title: "Réseaux sociaux"
+        content: "Vous pouvez me suivre ou me contacter sur différents réseaux sociaux."
+    button:
+      submit: "Envoyer"
+      reset: "Annuler"
+      loading: "Envoi en cours"
+    input:
+      label:
+        email: "Email"
+        object: "Objet"
+        message: "Message"
+      placeholder:
+        email: "Votre email"
+        object: "Objet"
+        message: "Votre message"
+    checkbox:
+      label:
+        sendcopy: "Envoyer une copie par mail"
+    result:
+      success: "Votre message a bien été envoyé"
+      error: "Impossible d'envoyer le message"
