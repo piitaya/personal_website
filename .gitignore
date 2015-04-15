@@ -8,7 +8,6 @@ doc/
 .DS_Store
 public/assets/*
 public/images/*
-Gemfile.lock
 
 config/settings/production.yml
 config/settings/development.yml
