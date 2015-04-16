@@ -24,7 +24,7 @@
             = f.collection_select :experience_ids, Experience.all, :id, :to_label, {}, {:multiple => true, :class=>"form-control", :size=>"10"}
           .form-group
             .center
-              = f.submit "Save", :class=> "btn btn-primary btn-raised"
+              = f.submit t("action.save"), :class=> "btn btn-primary btn-raised"
             
 :javascript
   $(function() {
