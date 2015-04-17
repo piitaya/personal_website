@@ -24,7 +24,7 @@
         = yield
     %i.icon.icon-material-settings    
     = render 'layouts/footer' 
-
+    = render 'layouts/analytics' if Rails.env.production?
     :javascript
     $(function() {
         $.material.init();
